@@ -1,0 +1,17 @@
+.refresher {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.refresher:hover {
+  background-color: #5ed662;
+}
