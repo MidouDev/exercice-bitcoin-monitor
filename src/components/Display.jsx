@@ -22,13 +22,8 @@ const Display = props => (
             <td className="d-flex justify-content-center">
               {props.currentRate.USD}&nbsp;&nbsp;
               <Indicator
-                indicatorState={
-                  props.currentRate.USD - props.previousRate.USD > 0
-                    ? "fas fa-angle-up text-success"
-                    : props.currentRate.USD - props.previousRate.USD < 0
-                    ? "fas fa-angle-down text-danger"
-                    : "fas fa-minus text-muted"
-                }
+                currentRate={props.currentRate.USD}
+                previousRate={props.previousRate.USD}
               />
             </td>
           </tr>
@@ -40,13 +35,8 @@ const Display = props => (
             <td className="d-flex justify-content-center">
               {props.currentRate.GBP}&nbsp;&nbsp;
               <Indicator
-                indicatorState={
-                  props.currentRate.GBP - props.previousRate.GBP > 0
-                    ? "fas fa-angle-up text-success"
-                    : props.currentRate.GBP - props.previousRate.GBP < 0
-                    ? "fas fa-angle-down text-danger"
-                    : "fas fa-minus text-muted"
-                }
+                currentRate={props.currentRate.GBP}
+                previousRate={props.previousRate.GBP}
               />
             </td>
           </tr>
@@ -58,13 +48,8 @@ const Display = props => (
             <td className="d-flex justify-content-center">
               {props.currentRate.EUR}&nbsp;&nbsp;
               <Indicator
-                indicatorState={
-                  props.currentRate.EUR - props.previousRate.EUR > 0
-                    ? "fas fa-angle-up text-success"
-                    : props.currentRate.EUR - props.previousRate.EUR < 0
-                    ? "fas fa-angle-down text-danger"
-                    : "fas fa-minus text-muted"
-                }
+                currentRate={props.currentRate.EUR}
+                previousRate={props.previousRate.EUR}
               />
             </td>
           </tr>
@@ -81,23 +66,12 @@ const Display = props => (
                 ))}
               </select>
             </th>
-            <td>{props.previouslySelectedCurrency.OTHER}</td>
+            <td>{props.previousRate.OTHER}</td>
             <td className="d-flex justify-content-center">
-              {props.selectedCurrency.OTHER}&nbsp;&nbsp;
+              {props.currentRate.OTHER}&nbsp;&nbsp;
               <Indicator
-                indicatorState={
-                  props.selectedCurrency.OTHER === undefined
-                    ? ""
-                    : props.selectedCurrency.OTHER -
-                        props.previouslySelectedCurrency.OTHER >
-                      0
-                    ? "fas fa-angle-up text-success"
-                    : props.selectedCurrency.OTHER -
-                        props.previouslySelectedCurrency.OTHER <
-                      0
-                    ? "fas fa-angle-down text-danger"
-                    : "fas fa-minus text-muted"
-                }
+                currentRate={props.currentRate.OTHER}
+                previousRate={props.previousRate.OTHER}
               />
             </td>
           </tr>
