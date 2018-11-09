@@ -1,5 +1,6 @@
 import React from "react";
 import Indicator from "./Indicator";
+import currencies from "../lib/currencies.json";
 
 const Display = props => (
   <div className="display">
@@ -61,6 +62,39 @@ const Display = props => (
                   props.currentRate.EUR - props.previousRate.EUR > 0
                     ? "fas fa-angle-up text-success"
                     : props.currentRate.EUR - props.previousRate.EUR < 0
+                    ? "fas fa-angle-down text-danger"
+                    : "fas fa-minus text-muted"
+                }
+              />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <select
+                className="custom-select text-center"
+                onChange={props.onCurrencyChange}
+              >
+                {currencies.map(currency => (
+                  <option value={currency.currency} key={currency.currency}>
+                    {currency.currency}
+                  </option>
+                ))}
+              </select>
+            </th>
+            <td>{props.previouslySelectedCurrency.OTHER}</td>
+            <td className="d-flex justify-content-center">
+              {props.selectedCurrency.OTHER}&nbsp;&nbsp;
+              <Indicator
+                indicatorState={
+                  props.selectedCurrency.OTHER === undefined
+                    ? ""
+                    : props.selectedCurrency.OTHER -
+                        props.previouslySelectedCurrency.OTHER >
+                      0
+                    ? "fas fa-angle-up text-success"
+                    : props.selectedCurrency.OTHER -
+                        props.previouslySelectedCurrency.OTHER <
+                      0
                     ? "fas fa-angle-down text-danger"
                     : "fas fa-minus text-muted"
                 }
